@@ -19,7 +19,8 @@ class PurchaseController {
 
     const purchase = await Purchase.create({
       ad,
-      buyer: req.userId
+      buyer: req.userId,
+      content
     })
 
     Queue.create(PurchaseMail.key, {
