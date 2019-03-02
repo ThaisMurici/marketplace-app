@@ -30,18 +30,19 @@ routes.post(
   validate(validators.Ad),
   handle(controllers.AdController.store)
 )
-routes.put(
-  '/ads/:id',
-  validate(validators.Ad),
-  handle(controllers.AdController.update)
-)
+routes.put('/ads/:id', handle(controllers.AdController.update))
 routes.delete('/ads/:id', handle(controllers.AdController.destroy))
 
 // Purchases Routes
+routes.get('/purchases', handle(controllers.PurchaseController.index))
 routes.post(
   '/purchases',
   validate(validators.Purchase),
   handle(controllers.PurchaseController.store)
+)
+routes.get(
+  '/purchases/accept/:id',
+  handle(controllers.PurchaseController.accept)
 )
 
 module.exports = routes
